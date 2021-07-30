@@ -1,0 +1,151 @@
+/* MAIN STYLES */
+.door{
+    position: relative;
+    width: 170px;
+    height: 270px;
+    margin: 0 auto 50px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: perspective(2500px);
+}
+
+.door-front{
+    position: absolute;
+    width: 170px;
+    height: 270px;
+    transform-origin: left;
+    overflow: hidden;
+    box-shadow: 30px 0 50px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    background-color: #924500;
+    transition: .5s;
+}
+
+.door-front::before,
+.door-front::after{
+    content: '';
+    position: absolute;
+    background-color: #924500;
+    width: 105px;
+    height: 90px;
+    border: 10px ridge #b05500;
+    left: 22.5px;
+}
+
+.door-front::before{
+    top: 25px;
+}
+
+.door-front::after{
+    top: 155px;
+}
+
+.knob{
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background-color: #eeba0b;
+    top: 115px;
+    right: 10px;
+    border-radius: 2px;
+}
+
+.knob::before{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: #f1c83c;
+    width: 18px;
+    height: 18px;
+    left: -1px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.knob::after{
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 7px;
+    background-color: #333;
+    top: 20px;
+    left: 8.5px;
+}
+
+.door.selected .door-front{
+    transform: rotateY(-30deg);
+}
+
+.door.opened .door-front,
+.door.opened:hover .door-front{
+    transform: rotateY(-120deg);
+}
+
+.door-back{
+    position: relative;
+    background: linear-gradient(0deg, rgba(193, 124, 116, 1) 13%, rgba(73, 88, 103, 1) 13%, rgba(79, 100, 124, 1) 15%, rgba(87, 115, 153, 1) 15%);
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    outline: 10px solid #edf2f4;
+}
+
+.door-mat{
+    position: relative;
+    perspective: 200px;
+}
+
+.door-mat::before{
+    content: '';
+    position: absolute;
+    width: 170px;
+    height: 70px;
+    background: repeating-linear-gradient(#a8763e, #a8763e 10px, #9d741a 10px, #9d741a 20px);
+    top: 20px;
+    outline: 5px solid #a8763e;
+    transform: rotateX(45deg);
+}
+
+.car{
+    display: none;
+    width: 300px;
+    left: -170px;
+    position: relative;
+    bottom: -100px;
+}
+
+.car.show{
+    display: block;
+}
+
+.goat{
+    display: none;
+    position: relative;
+    bottom: -90px;
+    left: -40px;
+    width: 150px;
+}
+
+.goat.show{
+    display: block;
+}
+
+.selected-text{
+    font-size: 18px;
+    font-weight: 500;
+    color: #d25a3f;
+    opacity: 0;
+    transition: .5s;
+    cursor: default;
+}
+
+.selected-text.show{
+    opacity: 1;
+    transition: .5s;
+}
+
+.result-text{
+    padding: 20px 10px;
+    background-color: #efefef;
+    border-radius: 10px;
+    height: 73px;
+}

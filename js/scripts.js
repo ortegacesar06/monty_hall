@@ -2,6 +2,9 @@ var values = ['car', 'goat', 'goat'];
 var car_index = null;
 var selected_index = null;
 
+var wins = 0;
+var games = 0;
+
 function shuffle(array) {
     var currentIndex = array.length, randomIndex;
 
@@ -77,15 +80,19 @@ $('#set-btn').on('click', function () {
 
 $('#select-btn').on('click', function(){
     $('.door[data-pos="' + selected_index + '"]').addClass('opened');
-    
+    games++;
     if(selected_index === car_index){
+        wins++;
         $('.result-text').text('¡Ganaste!');
     }else{
         $('.result-text').text('Perdiste :(');
     }
 
     $(this).attr('disabled', 'disabled');
-    $('#reset-btn').removeAttr('disabled')
+    $('#reset-btn').removeAttr('disabled');
+
+    var percentage = parseFloat((wins/games) * 100).toFixed(2);
+    $('.percentage-text').text(percentage+'%');
 });
 
 $('#reset-btn').on('click', function(){
